@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Search Bar</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Search Bar Container */
+    .search-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 25px;
+      padding: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .search-container:hover {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Search Input */
+    .search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .search-input.hidden {
+      width: 0;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Search Icon */
+    .search-icon {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      margin: 0 10px;
+      background-color: #2c3e50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .search-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .search-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .search-container {
+        max-width: 300px;
+      }
+
+      .search-input {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <input type="text" class="search-input hidden" placeholder="Search...">
+    <div class="search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 2a8 8 0 106.32 14.9l4.38 4.38a1 1 0 001.4-1.4l-4.38-4.38A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.querySelector('.search-input');
+    const searchIcon = document.querySelector('.search-icon');
+
+    searchIcon.addEventListener('click', () => {
+      searchInput.classList.toggle('hidden');
+      if (!searchInput.classList.contains('hidden')) {
+        searchInput.focus(); // Auto-focus the input field
+      }
+    });
+  </script>
+</body>
+</html>
